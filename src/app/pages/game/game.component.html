@@ -19,6 +19,6 @@
   <div style="grid-column: 1 / 4;"></div>
 
   <!-- Mobile Controls -->
-  <input type="button" class="mobileControls left" value="<-" (mousedown)="this.currentKey = 'ArrowLeft'" (mouseup)="this.currentKey = ''">
-  <input type="button" class="mobileControls right" value="->" (mousedown)="this.currentKey = 'ArrowRight'" (mouseup)="this.currentKey = ''">
+  <input type="button" class="mobileControls left" value="<-" (pointerdown)="this.currentKey = 'ArrowLeft'" (pointerup)="this.currentKey = ''"> <!-- Using pointer-->
+  <input type="button" class="mobileControls right" value="->" (pointerdown)="this.currentKey = 'ArrowRight'" (pointerup)="this.currentKey = ''">
 </div>
