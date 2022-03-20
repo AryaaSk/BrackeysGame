@@ -1,0 +1,20 @@
+<div class="container">
+    <canvas id="renderingWindow" style="height: 100%; width: 100%; position: absolute; z-index: -1;"></canvas>
+  
+    <div class="pauseMenu" *ngIf="this.paused == true" (click)="this.paused = false; this.startGameLoop();">Game Paused, Click to resume...</div>
+
+    <div style="grid-column: 1 / 4; text-align: right;"> <!-- All divs apart from info and level editor are buffer divs-->
+      <input type="button" value="Level Builder" style="margin: 10px; z-index: 1;" (click)="this.router.navigate(['levelBuilder']);">
+    </div> 
+  
+    <div></div>
+    <div class="info">
+      <h2 style="font-size: 50px;">{{persistanceText}}</h2>
+  
+      <br>
+  
+      <h1 style="font-size: 50px;" id="popupText">{{popupText}}</h1>
+    </div>
+    <div></div>
+    <div style="grid-column: 1 / 4;"></div>
+  </div>
