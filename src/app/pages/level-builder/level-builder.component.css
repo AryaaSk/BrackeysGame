@@ -26,10 +26,35 @@
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
+@media only screen and (max-width: 1150px) {
+    .levelsContainer
+    {
+        grid-template-columns: 50% 50%;
+    }
+    .addLevelButton
+    {
+        height: 400px;
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .levelsContainer
+    {
+        grid-template-columns: 100%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .levelsContainer
+    {
+        zoom: 80%;
+    }
+}
+
 .addLevelButton
 {
     height: 500px;
     width: 400px;
+    margin-bottom: 10px;
 
     border-radius: 20px;
     background-color: lightgrey;
