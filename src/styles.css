@@ -3,4 +3,10 @@
 body{
     margin: 0 !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    --goodButtonColour: rgb(27, 116, 194);
+    --goodButtonColourSelected: rgb(14, 81, 140);
+    --badButtonColour: red;
+    --badButtonColourSelected: rgb(201, 48, 48);;
+    --levelWidthPX: 320px;
 }

@@ -57,6 +57,14 @@ export class GameComponent implements OnInit {
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
+    window.addEventListener("resize", () => { //to resize renderer when window resizes
+      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.render();
+    })
+
     this.scene.background = new THREE.Color( 0x87ceeb );
     
     //adding the plane and finish line here since the plane is dynamic based on the length of the level in the level-grids.service.ts
@@ -65,8 +73,12 @@ export class GameComponent implements OnInit {
     this.plane = new THREE.Mesh(planeGeo, planeMat);
     this.scene.add(this.plane);
 
+    const checkeredFlagTexture = new THREE.TextureLoader().load( 'assets/checkered-flag-texture.jpg' ); //load the checkeredFlagTexture from the assets folder
+    checkeredFlagTexture.wrapS = THREE.RepeatWrapping;
+    checkeredFlagTexture.wrapT = THREE.RepeatWrapping;
+
     const finishGeo = new THREE.BoxGeometry(this.plane.geometry.parameters.width, this.plane.geometry.parameters.height, 20);
-    const finishMat = new THREE.MeshStandardMaterial( {color: 0x0000FF, wireframe: false} );
+    const finishMat = new THREE.MeshStandardMaterial( { map: checkeredFlagTexture, wireframe: false} );
     this.finish = new THREE.Mesh(finishGeo, finishMat);
     this.scene.add(this.finish);
 
@@ -193,7 +205,7 @@ export class GameComponent implements OnInit {
     this.stopLoop();
     if (this.levels.currentLevelIndex == this.levels.gameLevels.length - 1)
     { 
-      this.showPopup("Here's a certificate", 2000); 
+      //this.showPopup("Here's a certificate", 2000);
       this.persistanceText = "You have completed the game! Press R to play again..."
       document.onkeydown = ($event) => {
         if ($event.key == "r")

@@ -3,31 +3,37 @@
         <div> <input type="button" value="Back to Game" (click)="this.router.navigate(['']);"> </div>
 
         <div class="levelsContainer">
-            <div *ngFor="let level of this.levelService.gameLevels; let levelIndex = index;">
-                <div class="centered">Name: <input style="margin-left: 10px;" type="text" [(ngModel)]='level.levelName' (ngModelChange)="saveData()"></div> <br>
-                <div class="centered">Speed: <input  style="margin-left: 10px;" type="number" min="1" max="8" [(ngModel)]='level.speed' (ngModelChange)="saveData()"></div> <br>
+            <div class="level" *ngFor="let level of this.levelService.gameLevels; let levelIndex = index;">
+
+                <div class="levelMetadata">
+                    <div class="centered">Name:</div> <div><input class="metadataInput" type="text" [(ngModel)]='level.levelName' (ngModelChange)="saveData()"></div>
+                    <div class="centered">Speed:</div> <div><input class="metadataInput" type="number" min="1" max="5" [(ngModel)]='level.speed' (ngModelChange)="saveData()"></div>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <input type="button" value="Play this level" class="playDeleteLevelButton play" (click)="goToLevel(levelIndex)">
+                    <input type="button" value="Delete this level" class="playDeleteLevelButton delete" (click)="deleteLevel(levelIndex)">
+                </div>
+                <br>
                 <div class="centered">
-                    <input type="button" value="Play this level" (click)="goToLevel(levelIndex)">
-                    <input type="button" value="Delete this level" (click)="deleteLevel(levelIndex)">
-                </div> <br>
-                <div class="centered">
-                    
                     <div class="levelGrid" [style.height]="(level.obstacles.length * 40) + 'px'">
                         <div class="levelObstacleRow" *ngFor="let obstacleRow of level.obstacles; let row = index;">
                             <div class="levelObstacle" *ngFor="let obstacle of obstacleRow; let column = index;" 
                                 [style.background-color]="obstacle == '#' ? '#242424' : 'lightgrey' "
                                 (click)="switchObstacle(levelIndex, row, column)"
                             ></div>
-                            <div> <input type="button" class="deleteRowButton" value="🗑" (click)="deleteRow(levelIndex, row)"> </div>
+                            <div> <input type="button" class="deleteRowButton" value="—" style="font-size: large;" (click)="deleteRow(levelIndex, row)"> </div>
                         </div>
                     </div>
-                    <input type="button" style="margin: 0 auto; margin-bottom: 10px;" value="Add Row" (click)="addRow(levelIndex)">
+                    <input type="button" class="addRowButton" value="Add Row" (click)="addRow(levelIndex)">
                 </div>
             </div>
 
-            <div class="addLevel centered">
-                <input type="button" value="Add Level" class="addLevelButton" (click)="addLevel()">
-            </div>
+             <input type="button" value="Add Level" class="addLevelButton level" (click)="addLevel()">
+
         </div>
+
+        <div></div>
+
     </div>
 </div>
