@@ -67,6 +67,7 @@
     background-color: lightgrey;
     transition: 100ms background-color;
     border: none;
+    border-radius: 0;
 
     font-size: 50px;
     cursor: pointer;
@@ -101,6 +102,7 @@
 
     border: none;
     background-color: rgb(235, 235, 235);
+    border-radius: 0;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -113,6 +115,7 @@
     width: calc(var(--levelWidthPX) / 2);
 
     border: none;
+    border-radius: 0;
     color: white;
     font-size: medium;
     cursor: pointer;
@@ -131,6 +134,7 @@
     /*The actual dimensions for the normal plane is 80 * 200, with 8 cubes on onw row*/
     width: calc(var(--levelWidthPX) + 40px); /*320px is for the 8 cubes, and then there's an extra 40px for the delete row button */
     /*height: 800px; Height is set dynamically*/
+    position: relative;
 
     display: grid;
     grid-template-columns: 100%;
@@ -138,10 +142,29 @@
 
     transform: translateX(20px); /*this is to account for the extra 40px from the delete button*/
 }
+.levelGridBorder
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 40px;
+
+    border-left: 1px solid #2424246d;
+    border-top: 1px solid #2424246d;
+
+    pointer-events: none;
+}
 .levelObstacleRow
 {
     display: grid;
     grid-template-columns: repeat(auto-fill, 40px);
+}
+.levelObstacle /*Need to use a different div for the border since I don't want the grid borders to show the extra 40px for the delete buttonts */
+{ 
+    cursor: pointer;
+    border-right: 1px solid #2424246d;
+    border-bottom: 1px solid #2424246d;
 }
 .addRowButton
 {   
@@ -153,6 +176,7 @@
     margin-bottom: 10px;
 
     border: none;
+    border-radius: 0;
     background-color: var(--goodButtonColour);
     color: white;
     font-size: large;
@@ -170,9 +194,8 @@
     transition: 200ms;
 
     border: none;
+    border-radius: 0;
     cursor: pointer;
 }
 .deleteRowButton:hover
 { opacity: 100%; }
-.levelObstacle
-{ cursor: pointer; }
