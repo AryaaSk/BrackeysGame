@@ -24,4 +24,4 @@ The Level Editor just saves all the changes you make to a global gameLevels obje
 
 The actual game just uses basic THREEJS objects, however the Obstacles are all rendered as one mesh, and using the Box3 collision detection wouldn't work since it generates an Axis-Aligned-Bounding-Box, which basically means that the game would think that the player collided with an obstacle when he/she actually didn't. 
 
-So to fix this I had to implement a RayTracer which fires a ray from the 2 front corners of the player, and then detects if those rays have hit anything **((since the only thing on the map is the obstacles this didn't matter)**. This is why sometimes the collision detection is a little faulty, and the player will go into the obstacle a little bit before the collision is detected.
+So to fix this I had to implement a RayTracer which fires a ray from the 2 front corners of the player, and then detects if those rays have hit anything *(since the only thing on the map is the obstacles this didn't matter)*. This is why sometimes the collision detection is a little faulty, and the player will go into the obstacle a little bit before the collision is detected.
