@@ -12,10 +12,11 @@ import { mergeBufferGeometries, mergeVertices } from 'three/examples/jsm/utils/B
 })
 export class GameComponent implements OnInit {
   
-  ngOnInit(): void {
-  }
-
   constructor (public router: Router, private levels: LevelGridsService) {}
+
+  ngOnInit(): void {
+    this.levels.loadLevelsFromStorage();
+  }
 
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
@@ -27,7 +28,6 @@ export class GameComponent implements OnInit {
 
   persistanceText = "";
   popupText = "";
-  currentLevel = 0;
 
   showPopup(text: string, duration: number)
   {
@@ -89,14 +89,14 @@ export class GameComponent implements OnInit {
   createScene()
   {
     const originalPlaneDepth = 10; //the original depth of the plane is 10, just since 10 is a nice number that usually divides nicely
-    const planeScale = (this.levels.gameLevels[this.currentLevel].obstacles.length * 10 / originalPlaneDepth);
+    const planeScale = (this.levels.gameLevels[this.levels.currentLevelIndex].obstacles.length * 10 / originalPlaneDepth);
     this.plane.geometry.parameters.depth = originalPlaneDepth * planeScale
     this.plane.scale.z = planeScale;
 
     //positioning the finish line right after the track
     this.finish.position.z = JSON.parse(JSON.stringify(this.plane.position.z - (this.plane.geometry.parameters.depth / 2) - (this.finish.geometry.parameters.depth / 2)));
 
-    this.persistanceText = `Current Level: ${this.levels.gameLevels[this.currentLevel].levelName}`;
+    this.persistanceText = `Current Level: ${this.levels.gameLevels[this.levels.currentLevelIndex].levelName}`;
     this.player.position.z = this.plane.position.z + (this.plane.geometry.parameters.depth / 2) - (this.player.geometry.parameters.depth / 2); //to position the player at the start of the plane
 
     this.addObstacles();
@@ -110,7 +110,7 @@ export class GameComponent implements OnInit {
 
     //define an array which has a "#" or " " allocated for every 10*10*10 space on the plane, the plane is 80*200, so there should be 160 cubes in total
     //I am going to merge all the cubes into 1 mesh, since we don't need to know specifically which cube the player has hit, only that the player has hit an obstacle 
-    const obstacleGrid = this.levels.gameLevels[this.currentLevel].obstacles;
+    const obstacleGrid = this.levels.gameLevels[this.levels.currentLevelIndex].obstacles;
 
     const obstacleGeo = new THREE.BoxGeometry(10, 10, 10);
     const obstacleMat = new THREE.MeshStandardMaterial( {color: 0x242424, wireframe: false } );
@@ -152,7 +152,7 @@ export class GameComponent implements OnInit {
   gameLoop: any = undefined;
   startGameLoop()
   {
-    const levelSpeed = this.levels.gameLevels[this.currentLevel].speed; //player is constantly moving forward at speed of level
+    const levelSpeed = this.levels.gameLevels[this.levels.currentLevelIndex].speed; //player is constantly moving forward at speed of level
     this.gameLoop = setInterval(() => {
       this.player.position.z -= levelSpeed; //move player forward
 
@@ -191,10 +191,10 @@ export class GameComponent implements OnInit {
   nextLevel()
   { 
     this.stopLoop();
-    if (this.currentLevel == this.levels.gameLevels.length - 1)
+    if (this.levels.currentLevelIndex == this.levels.gameLevels.length - 1)
     { this.showPopup("Here's a certificate", 5000); this.persistanceText = "You have completed the game !" }
     else
-    { setTimeout(() => { this.currentLevel += 1; this.createScene(); }, 50); }
+    { setTimeout(() => { this.levels.currentLevelIndex += 1; this.createScene(); }, 50); }
   }
 
   syncCamera()
