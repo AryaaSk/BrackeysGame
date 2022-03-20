@@ -1,27 +1,19 @@
-# FpsTest
+# Brackey's Game
+## I made this project to learn a little about THREEJS and web games.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+This game I made was inspired by the game which Brackey makes on his Unity beginners tutorial: https://www.youtube.com/watch?v=IlKaB1etrik\
+However the only thing that was taken from that series is the game idea, since that is teaching unity, however I am making this game on the web using THREEJS.
 
-## Development server
+## Game Contents:
+Just guide the cube (player) through the obstacles and to the finish line:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Preview 1](https://github.com/AryaaSk/BrackeysGame/blob/master/Previews/Preview1.png?raw=true)
 
-## Code scaffolding
+There is also a Level Editor where you can edit and make your own levels, this is a little buggy as if you don't add any obstacles or if you remove all levels then the game won't work, but otherwise should be fine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Preview 2](https://github.com/AryaaSk/BrackeysGame/blob/master/Previews/Preview2.png?raw=true)
 
-## Build
+## How it works:
+The Level Editor just saves all the changes you make to a global gameLevels object, which is also saved to local storage so you don't lose your levels when you refresh the page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The actual game just uses basic THREEJS objects, however the Obstacles are all rendered as one mesh, and using the Box3 collision detection wouldn't work since it generates an Axis-Aligned-Bounding-Box, which basically means that the game would think that the player collided with an obstacle when he/she actually didn't. So to fix this I had to implement a RayTracer which fires a ray from the 2 front corners of the player, and then detects if those rays have hit anything **((since the only thing on the map is the obstacles this didn't matter)**. This is why sometimes the collision detection is a little faulty, and the player will go into the obstacle a little bit before the collision is detected.
