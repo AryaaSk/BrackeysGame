@@ -1,8 +1,10 @@
 # Brackey's Game
 ## I made this project to learn a little about THREEJS and web games.
 
-This game I made was inspired by the game which Brackey makes on his Unity beginners tutorial: https://www.youtube.com/watch?v=IlKaB1etrik\
+This game I made was inspired by the game which Brackey makes on his Unity beginners tutorial: https://www.youtube.com/watch?v=IlKaB1etrik \
 However the only thing that was taken from that series is the game idea, since that is teaching unity, however I am making this game on the web using THREEJS.
+
+Here is the URL: https://aryaacubegame.azurewebsites.net
 
 ## Game Contents:
 Just guide the cube (player) through the obstacles and to the finish line:
