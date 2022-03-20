@@ -44,7 +44,7 @@
     background-color: rgb(172, 172, 172);
 }
 
-.levelItemWrapper
+.centered
 {
     display: grid;
     place-content: center;
@@ -59,6 +59,7 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat(auto-fill, 40px); /* since I multiplied the normal dimensions by 4, I also need to multiply the 10px by 4*/
 
+    transform: translateX(20px); /*this is to account for the extra 40px from the delete button*/
     margin-bottom: 10px;
 }
 .levelObstacleRow
@@ -76,6 +77,7 @@
     transition: 200ms;
 
     border: none;
+    cursor: pointer;
 }
 .deleteRowButton:hover
 { opacity: 100%; }

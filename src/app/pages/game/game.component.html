@@ -3,8 +3,8 @@
   
     <div class="pauseMenu" *ngIf="this.paused == true" (click)="this.paused = false; this.startGameLoop();">Game Paused, Click to resume...</div>
 
-    <div style="grid-column: 1 / 4; text-align: right;"> <!-- All divs apart from info and level editor are buffer divs-->
-      <input type="button" value="Level Builder" style="margin: 10px; z-index: 1;" (click)="this.router.navigate(['levelBuilder']);">
+    <div style="grid-column: 1 / 4; text-align: left;"> <!-- All divs apart from info and level editor are buffer divs-->
+      <input type="button" value="Level Editor" style="margin: 10px; z-index: 1;" (click)="this.router.navigate(['levelBuilder']);">
     </div> 
   
     <div></div>

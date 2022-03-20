@@ -192,7 +192,14 @@ export class GameComponent implements OnInit {
   { 
     this.stopLoop();
     if (this.levels.currentLevelIndex == this.levels.gameLevels.length - 1)
-    { this.showPopup("Here's a certificate", 5000); this.persistanceText = "You have completed the game !" }
+    { 
+      this.showPopup("Here's a certificate", 2000); 
+      this.persistanceText = "You have completed the game! Press R to play again..."
+      document.onkeydown = ($event) => {
+        if ($event.key == "r")
+        { location.reload(); }
+      }
+    }
     else
     { setTimeout(() => { this.levels.currentLevelIndex += 1; this.createScene(); }, 50); }
   }

@@ -45,6 +45,20 @@ export class LevelBuilderComponent implements OnInit {
     this.levelService.gameLevels.push(sampleLevel);
     this.saveData();
   }
+  deleteLevel(level: number)
+  {
+    if (this.levelService.currentLevelIndex != 0)
+    { this.levelService.currentLevelIndex -= 1; }
+    this.levelService.gameLevels.splice(level, 1);
+    this.saveData();
+  }
+  goToLevel(level: number)
+  {
+    this.levelService.currentLevelIndex = level;
+    this.router.navigate(['']);
+  }
+
+
   addRow(level: number)
   {
     this.levelService.gameLevels[level].obstacles.push([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']);
