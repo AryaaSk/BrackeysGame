@@ -3,11 +3,22 @@
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    position: fixed; /* to stop the mobile safari from scrolling and bouncing the view around*/
 
     display: grid;
     grid-template-columns: 20% 60% 20%;
     grid-template-rows: 10% 35% 55%;
 }
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
 .info
 {
     text-align: center;

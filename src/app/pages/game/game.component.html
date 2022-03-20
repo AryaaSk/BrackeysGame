@@ -1,22 +1,22 @@
-<div class="container">
+<div class="container noselect">
   <canvas id="renderingWindow" style="height: 100%; width: 100%; position: absolute; z-index: -1;"></canvas>
 
-  <div class="pauseMenu" *ngIf="this.paused == true" (click)="this.paused = false; this.startGameLoop();">Game Paused, Click to resume...</div>
+  <div class="pauseMenu noselect" *ngIf="this.paused == true" (click)="this.paused = false; this.startGameLoop();">Game Paused, Click to resume...</div>
 
   <div style="grid-column: 1 / 4; text-align: left;"> <!-- All divs apart from info and level editor are buffer divs-->
-    <input type="button" value="Level Editor" style="margin: 10px; z-index: 1;" (click)="this.router.navigate(['levelBuilder']);">
+    <input type="button" value="Level Editor" style="margin: 10px; z-index: 1;" class="noselect" (click)="this.router.navigate(['levelBuilder']);">
   </div> 
 
   <div></div>
   <div class="info">
-    <h2 style="font-size: 2rem; z-index: 1;">{{persistanceText}}</h2>
+    <h2 style="font-size: 2rem; z-index: 1;" class="noselect">{{persistanceText}}</h2>
 
-    <h1 style="font-size: 1.5rem; z-index: 1;" id="popupText">{{popupText}}</h1>
+    <h1 style="font-size: 1.5rem; z-index: 1;" class="noselect" id="popupText">{{popupText}}</h1>
   </div>
   <div></div>
   <div style="grid-column: 1 / 4;"></div>
 
   <!-- Mobile Controls -->
-  <input type="button" class="mobileControls left" value="<-" (pointerdown)="this.currentKey = 'ArrowLeft'" (pointerup)="this.currentKey = ''"> <!-- Using pointer-->
-  <input type="button" class="mobileControls right" value="->" (pointerdown)="this.currentKey = 'ArrowRight'" (pointerup)="this.currentKey = ''">
+  <input type="button" class="mobileControls left noselect" value="<-" (pointerdown)="this.currentKey = 'ArrowLeft'" (pointerup)="this.currentKey = ''"> <!-- Using pointer-->
+  <input type="button" class="mobileControls right noselect" value="->" (pointerdown)="this.currentKey = 'ArrowRight'" (pointerup)="this.currentKey = ''">
 </div>
