@@ -7,11 +7,15 @@ However the only thing that was taken from that series is the game idea, since t
 Here is the URL: https://aryaacubegame.azurewebsites.net
 
 ## Game Contents:
-Just guide the cube (player) through the obstacles and to the finish line:
+Just guide the cube (player) through the obstacles and to the finish line.
+
+### Controls:
+- Arrow Keys to move
+- Esc / Escape to pause
 
 ![Preview 1](https://github.com/AryaaSk/BrackeysGame/blob/master/Previews/Preview1.png?raw=true)
 
-There is also a Level Editor where you can edit and make your own levels, this is a little buggy as if you don't add any obstacles or if you remove all levels then the game won't work, but otherwise should be fine:
+There is also a Level Editor where you can edit and make your own levels, you can access this by clicking the Level Editor button in the top left. It is a little buggy as if you don't add any obstacles or if you remove all levels then the game won't work, but otherwise should be fine:
 
 ![Preview 2](https://github.com/AryaaSk/BrackeysGame/blob/master/Previews/Preview2.png?raw=true)
 
