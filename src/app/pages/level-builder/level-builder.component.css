@@ -10,6 +10,9 @@ input[type=button] /*On iOS it gives buttons round corners for some reason*/
     bottom: 10px;
     left: 10px;
     right: 10px;
+
+    max-zoom: 1.0;
+    user-zoom: 0;
 }
 .containerInner
 {
