@@ -65,7 +65,7 @@
     bottom: 100px;
     z-index: 1; 
 
-    /*display: none; /*Hidden by default*/
+    display: none; /*Hidden by default*/
 }
 .mobileControls:active
 { background-color: rgba(128, 128, 128, 0.598); }
