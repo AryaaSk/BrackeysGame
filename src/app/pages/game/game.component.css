@@ -17,7 +17,10 @@
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+}
 
 .info
 {
@@ -53,15 +56,16 @@
     
     
     border: 1.5px solid black;
+    color: black;
     background-color: rgba(128, 128, 128, 0.317);
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 3rem;
 
     position: absolute;
     bottom: 100px;
     z-index: 1;
 
-    display: none; /*Hidden by default*/
+    /*display: none; /*Hidden by default*/
 }
 .mobileControls:active
 { background-color: rgba(128, 128, 128, 0.598); }

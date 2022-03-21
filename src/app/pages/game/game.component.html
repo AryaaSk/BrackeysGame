@@ -17,6 +17,6 @@
   <div style="grid-column: 1 / 4;"></div>
 
   <!-- Mobile Controls -->
-  <input type="button" class="mobileControls left noselect" value="<-" (pointerdown)="this.currentKey = 'ArrowLeft'" (pointerup)="this.currentKey = ''"> <!-- Using pointer-->
-  <input type="button" class="mobileControls right noselect" value="->" (pointerdown)="this.currentKey = 'ArrowRight'" (pointerup)="this.currentKey = ''">
+  <input type="button" class="mobileControls left noselect disable-dbl-tap-zoom" value="←" (pointerdown)="this.currentKey = 'ArrowLeft'" (pointerup)="this.currentKey = ''"> <!-- Using pointer-->
+  <input type="button" class="mobileControls right noselect disable-dbl-tap-zoom" value="→" (pointerdown)="this.currentKey = 'ArrowRight'" (pointerup)="this.currentKey = ''">
 </div>

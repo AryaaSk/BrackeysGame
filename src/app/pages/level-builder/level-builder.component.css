@@ -1,3 +1,8 @@
+input[type=button] /*On iOS it gives buttons round corners for some reason*/
+{
+    border-radius: 0;
+    -webkit-border-radius: 0px;
+}
 .container
 {
     position: absolute;
@@ -6,7 +11,6 @@
     left: 10px;
     right: 10px;
 }
-
 .containerInner
 {
     height: 100%;
@@ -67,9 +71,8 @@
     background-color: lightgrey;
     transition: 100ms background-color;
     border: none;
-    border-radius: 0;
 
-    font-size: 50px;
+    font-size: 3rem;
     cursor: pointer;
 }
 .addLevelButton:active
@@ -102,7 +105,8 @@
 
     border: none;
     background-color: rgb(235, 235, 235);
-    border-radius: 0;
+    font-size: 1rem;
+    
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -115,7 +119,6 @@
     width: calc(var(--levelWidthPX) / 2);
 
     border: none;
-    border-radius: 0;
     color: white;
     font-size: medium;
     cursor: pointer;
@@ -176,7 +179,7 @@
     margin-bottom: 10px;
 
     border: none;
-    border-radius: 0;
+    
     background-color: var(--goodButtonColour);
     color: white;
     font-size: large;
@@ -194,7 +197,7 @@
     transition: 200ms;
 
     border: none;
-    border-radius: 0;
+    
     cursor: pointer;
 }
 .deleteRowButton:hover
